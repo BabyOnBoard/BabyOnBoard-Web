@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+}
+
+@media(max-height: 100%){
+  body,
+  html {
+    height: auto;
+  }
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: #f2bcb4;
+  /*background: -webkit-linear-gradient(white, #f2bcb4);
+  background: -o-linear-gradient(white, #f2bcb4);
+  background: -moz-linear-gradient(white, #f2bcb4);
+  background: linear-gradient(white, #f2bcb4); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+/* You can add global styles to this file, and also import other style files */
