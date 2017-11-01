@@ -1,0 +1,48 @@
+.fixo-baixo {
+    position: fixed;
+    bottom: 0;
+    right: 2vh;
+    width: 20vh;
+    z-index: 1030;
+}
+
+.card-color {
+  background-color: #f7d9d4;
+}
+
+.card-icon {
+  position: relative;
+  top: -3vh;
+  left: -3vh;
+}
+
+.icon_size{
+  width: 30%;
+}
+
+@media (max-width: 768px) {
+  .icon_size{
+    height: 20%;
+    width: 20%;
+  }
+
+  .card-icon {
+    position: relative;
+    top: -3vh;
+    left: 0vh;
+  }
+}
+
+.rounded {
+  border-radius: 1rem !important;
+}
+
+.video-size {
+    width: 500px;
+}
+
+@media only screen and (max-width: 500px) {
+    .video-size {
+        width:100%;
+    }
+}
