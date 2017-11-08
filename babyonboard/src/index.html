@@ -21,11 +21,8 @@
 <script src="assets/js/popper.js"></script>
 <script src="assets/js/imported_bootstrap.js"></script>
 <script>
-  $('.card-deck-clicable').on('mouseover', function(event) {
-    alert('Sai do meu card');
-  });
-  $('.card-deck-clicable').on('click', function(event) {
-   alert('You clicked the Bootstrap Card');
+$('.card-deck-clicable').on('click', function(event) {
+   $('#myModal').modal('toggle');
  });
 </script>
 </html>

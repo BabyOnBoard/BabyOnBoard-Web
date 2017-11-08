@@ -56,19 +56,19 @@
 <!-- MOVIMENTOS -->
   <div class="bd-example">
     <div class="card-deck-clicable">
-      <div class="card card-color rounded">
+      <div class="card card-color rounded button-like" data-toggle="modal">
         <div class="card-icon">
-          <img  src="assets/img/icone_moving_crib.png" class="icon_size">
+            <img  src="assets/img/icone_moving_crib.png" class="icon_size">
         </div>
         <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_X.png">
       </div>
-      <div class="card card-color rounded">
+      <div class="card card-color rounded button-like">
         <div class="card-icon">
           <img  src="assets/img/icone_moving_crib.png" class="icon_size">
         </div>
         <img class="card-img mx-auto d-block crib-size" src="assets/img/icone_moving_crib_Z.png">
       </div>
-      <div class="card card-color rounded">
+      <div class="card card-color rounded button-like">
         <div class="card-icon">
           <img  src="assets/img/icone_moving_crib.png" class="icon_size">
         </div>
@@ -77,6 +77,28 @@
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ninar berço!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="recipient-name" class="form-control-label">Quantos Minutos?</label>
+              <input type="text" id="minutes" class="form-control " name="minutes" [(ngModel)]="query" (ngSubmit)="this.onSubmit(query)" (keyup.enter)="this.onSubmit(query)">
+              <button type="submit" class="btn btn-primary" (click)="this.onSubmit(query)" data-dismiss="modal">Ninar!</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- (ngSubmit)="onSubmit()" -->
 
 
 

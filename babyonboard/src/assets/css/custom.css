@@ -50,6 +50,11 @@
   }
 }
 
+.button-like:hover {
+  border-color: #f26d7d;
+  border-width: thick;
+}
+
 .icon_size{
   width: 30%;
 }
@@ -65,6 +70,12 @@
     top: -3vh;
     left: 0vh;
   }
+}
+
+.btn-color {
+  color: #fff;
+  background-color: #f7d9d4;
+  border-color: #f7d9d4;
 }
 
 .rounded {
