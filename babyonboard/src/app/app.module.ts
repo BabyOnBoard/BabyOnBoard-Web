@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { Observable } from "rxjs";
 import { TimerObservable } from "rxjs/observable/TimerObservable"
 import { AppComponent } from './app.component';
+import { APIService } from './api.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [APIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
