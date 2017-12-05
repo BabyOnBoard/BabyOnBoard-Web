@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
     this.getTemperature();
     this.getBreath();
 
-    Observable.timer(0, this.interval).subscribe(val => {
+    /*Observable.timer(0, this.interval).subscribe(val => {
         this.getBeats();
         this.getTemperature();
         this.getBreath();
@@ -123,19 +123,19 @@ export class AppComponent implements OnInit {
   }
 
   onSubmitFrontMove(value: string): void {
-    this.apiService.setMovement(this.url, value)
+    this.apiService.setMovement(this.url, value, 'front')
     this.move = Move.front_move;
     console.log('front move ativado por ' + value + ' minutos.');
   }
 
   onSubmitSideMove(value: string): void {
-    this.apiService.setMovement(this.url, value)
+    this.apiService.setMovement(this.url, value, 'side')
     this.move = Move.side_move;
     console.log('side move ativado por ' + value + ' minutos.');
   }
 
   onSubmitVibrate(value: string): void {
-    this.apiService.setMovement(this.url, value)
+    this.apiService.setMovement(this.url, value, 'vibration')
     this.move = Move.vibrate;
     console.log('vibrar ativado por ' + value + ' minutos.');
   }
