@@ -15,9 +15,6 @@
   width: 50%;
 }
 
-.crib-size-exception{
-  width: 35%;
-}
 
 .card-color {
   background-color: #f7d9d4;
@@ -27,6 +24,11 @@
   position: relative;
   top: -3vh;
   left: -3vh;
+}
+
+.card-padding{
+  padding-bottom: 2%;
+  padding-top: 2%;
 }
 
 @media (min-width: 576px) {
