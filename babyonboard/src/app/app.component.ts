@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
     this.ip = window.location.hostname;
     this.url = 'http://' + this.ip + ':8000/api/v1/';
-    this.video = this.ip + ':8081'
+    this.video = 'http://' + this.ip + ':8081'
 
   }
 
@@ -122,22 +122,21 @@ export class AppComponent implements OnInit {
     this.move = Move.none
   }
 
-  onSubmitFrontMove(): void {
-
+  onSubmitFrontMove(value: string): void {
+    this.apiService.setMovement(this.url, value)
     this.move = Move.front_move;
-    console.log('front move ativado');
-    //post
+    console.log('front move ativado por ' + value + ' minutos.');
   }
 
   onSubmitSideMove(value: string): void {
-
+    this.apiService.setMovement(this.url, value)
     this.move = Move.side_move;
-    console.log('side move ativado');
+    console.log('side move ativado por ' + value + ' minutos.');
   }
 
   onSubmitVibrate(value: string): void {
-
+    this.apiService.setMovement(this.url, value)
     this.move = Move.vibrate;
-    console.log('vobrar ativado');
+    console.log('vibrar ativado por ' + value + ' minutos.');
   }
 }

@@ -6,6 +6,10 @@
     z-index: 1030;
 }
 
+.top-logo-size{
+  width: 20vh;
+}
+
 .bd-example{
   position: relative;
   padding: 1.5rem;
@@ -93,3 +97,10 @@
         width:100%;
     }
 }
+
+
+.x{}
+
+.y{}
+
+.v{}

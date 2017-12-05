@@ -9,9 +9,9 @@ export class APIService {
 
 
   private endpoint_h = 'heartbeats/';
-  private endpoint_t = 'temperature';
-  private endpoint_b = 'breathing';
-
+  private endpoint_t = 'temperature/';
+  private endpoint_b = 'breathing/';
+  private endpoint_m = 'movement/';
 
   constructor(private http:HttpClient) { }
 
@@ -27,4 +27,7 @@ export class APIService {
     return this.http.get(url + this.endpoint_b);
   }
 
+  setMovement(url, value): void{
+    this.http.post(url+this.endpoint_m, value).subscribe();
+  }
 }
