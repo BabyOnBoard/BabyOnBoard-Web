@@ -58,11 +58,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getBeats();
-    this.getTemperature();
-    this.getBreath();
-    this.getMovement();
-
     Observable.timer(0, this.interval).subscribe(val => {
         this.getBeats();
         this.getTemperature();
@@ -72,10 +67,6 @@ export class AppComponent implements OnInit {
         if(this.results_m == "resting" && this.move != Move.none){
             this.onSubmitCancel();
         }
-
-        /*if(this.results_t == 0 && this.move != Move.none){
-            this.onSubmitCancel();
-        }*/
     });
   }
 
