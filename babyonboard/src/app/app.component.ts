@@ -25,6 +25,9 @@ export class AppComponent implements OnInit {
   private display_t: boolean;
   private display_b: boolean;
   private interval: number;
+  private endpoint_h = 'heartbeats/';
+  private endpoint_t = 'temperature/';
+  private endpoint_b = 'breathing/';
   private ip: string;
   private url;
 
@@ -57,31 +60,11 @@ export class AppComponent implements OnInit {
     this.getTemperature();
     this.getBreath();
 
-    /*Observable.timer(0, this.interval).subscribe(val => {
+    Observable.timer(0, this.interval).subscribe(val => {
         this.getBeats();
         this.getTemperature();
         this.getBreath();
     });
-
-  /*  Observable.timer(0, this.interval).subscribe(val => {
-        this.http.get(url + endpoint_h).subscribe((data) => {
-            this.results_h = data['beats'];
-            console.log(data);
-
-          });
-
-          this.http.get(url + endpoint_t).subscribe(data => {
-            this.results_t = data['temperature'];
-            console.log(data);
-
-          });
-
-          this.http.get(url + endpoint_b).subscribe(data => {
-            this.results_b = data['is_breathing'];
-            console.log(data);
-
-          });
-    }); */
   }
 
   ngOnDestroy(){
@@ -89,7 +72,7 @@ export class AppComponent implements OnInit {
   }
 
   getBeats(){
-    this.apiService.getBeats(this.url).subscribe(data => {
+    this.apiService.getData(this.url+this.endpoint_h).subscribe(data => {
       this.results_h = data['beats'];
       this.display_h = true;
     },
@@ -99,7 +82,7 @@ export class AppComponent implements OnInit {
   }
 
   getTemperature(){
-    this.apiService.getTemperature(this.url).subscribe(data => {
+    this.apiService.getData(this.url+this.endpoint_t).subscribe(data => {
       this.results_t = data['temperature'];
       this.display_t = true;
     },
@@ -109,8 +92,8 @@ export class AppComponent implements OnInit {
   }
 
   getBreath(){
-    this.apiService.getBreath(this.url).subscribe(data => {
-      this.results_b = data['is_breathing'];
+    this.apiService.getData(this.url+this.endpoint_b).subscribe(data => {
+      this.results_b = data['status'];
       this.display_b = true;
     },
     error => {
