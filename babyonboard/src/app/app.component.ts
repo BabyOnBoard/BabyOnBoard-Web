@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
     this.display_t = false;
     this.display_b = false;
     this.alive = true;
-    this.interval = 1000;
+    this.interval = 5000;
     this.move = Move.none;
 
     this.ip = window.location.hostname;
@@ -72,6 +72,10 @@ export class AppComponent implements OnInit {
         if(this.results_m == "resting" && this.move != Move.none){
             this.onSubmitCancel();
         }
+
+        /*if(this.results_t == 0 && this.move != Move.none){
+            this.onSubmitCancel();
+        }*/
     });
   }
 
