@@ -28,15 +28,17 @@ export class AppComponent implements OnInit {
   private endpoint_h = 'heartbeats/';
   private endpoint_t = 'temperature/';
   private endpoint_b = 'breathing/';
+  private endpoint_m = 'movement/';
   private ip: string;
   private url;
 
-  move: Move;
-  video: string;
-
+  private results_m = {};
   results_h = {};
   results_t = {};
   results_b = {};
+
+  move: Move;
+  video: string;
 
 
   constructor(private apiService:APIService) {
@@ -59,16 +61,26 @@ export class AppComponent implements OnInit {
     this.getBeats();
     this.getTemperature();
     this.getBreath();
+    this.getMovement();
 
     Observable.timer(0, this.interval).subscribe(val => {
         this.getBeats();
         this.getTemperature();
         this.getBreath();
+        this.getMovement();
+
+        if(this.results_m == "resting" && this.move != Move.none){
+            this.onSubmitCancel();
+        }
     });
   }
 
   ngOnDestroy(){
     this.alive = false; // switches your TimerObservable off
+  }
+
+  onSubmitCancel():void {
+    this.move = Move.none
   }
 
   getBeats(){
@@ -101,24 +113,29 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onSubmitCancel():void {
-    this.move = Move.none
+  getMovement(){
+    this.apiService.getData(this.url+this.endpoint_m).subscribe(data => {
+      this.results_m = data['status'];
+    },
+    error => {
+      console.log('API não encontrada');
+    });
   }
 
   onSubmitFrontMove(value: string): void {
-    this.apiService.setMovement(this.url, value, 'front')
+    this.apiService.setMovement(this.url+this.endpoint_m, value, 'front')
     this.move = Move.front_move;
     console.log('front move ativado por ' + value + ' minutos.');
   }
 
   onSubmitSideMove(value: string): void {
-    this.apiService.setMovement(this.url, value, 'side')
+    this.apiService.setMovement(this.url+this.endpoint_m, value, 'side')
     this.move = Move.side_move;
     console.log('side move ativado por ' + value + ' minutos.');
   }
 
   onSubmitVibrate(value: string): void {
-    this.apiService.setMovement(this.url, value, 'vibration')
+    this.apiService.setMovement(this.url+this.endpoint_m, value, 'vibration')
     this.move = Move.vibrate;
     console.log('vibrar ativado por ' + value + ' minutos.');
   }

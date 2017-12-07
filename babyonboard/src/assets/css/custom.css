@@ -24,6 +24,10 @@
   background-color: #f7d9d4;
 }
 
+.card-color-test {
+  background-color: blue;
+}
+
 .card-icon {
   position: relative;
   top: -3vh;

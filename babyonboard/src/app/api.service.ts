@@ -7,9 +7,6 @@ import { Observable } from "rxjs";
 @Injectable()
 export class APIService {
 
-
-  private endpoint_m = 'movement/';
-
   constructor(private http:HttpClient) { }
 
 
@@ -27,7 +24,7 @@ export class APIService {
     let message = JSON.stringify(data);
 
     console.log(message);
-    this.http.post(url+this.endpoint_m, message, {
+    this.http.post(url, message, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     }).subscribe();
     console.log('passou do post');
