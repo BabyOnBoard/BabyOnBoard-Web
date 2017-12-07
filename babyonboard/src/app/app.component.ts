@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   private display_h: boolean;
   private display_t: boolean;
   private display_b: boolean;
-  private interval: number;
+  private interval = 5000;;
   private endpoint_h = 'heartbeats/';
   private endpoint_t = 'temperature/';
   private endpoint_b = 'breathing/';
@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
     this.display_t = false;
     this.display_b = false;
     this.alive = true;
-    this.interval = 5000;
     this.move = Move.none;
 
     this.ip = window.location.hostname;
@@ -58,6 +57,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //Constantly requiring the information
     Observable.timer(0, this.interval).subscribe(val => {
         this.getBeats();
         this.getTemperature();
@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmitCancel():void {
-    this.move = Move.none
+    this.move = Move.none // screen back to default
   }
 
   getBeats(){
@@ -84,7 +84,7 @@ export class AppComponent implements OnInit {
       this.display_h = true;
     },
     error => {
-      this.results_h = 'API não encontrada';
+      this.results_h = 'Problema de inicialização do berço';
     });
   }
 
@@ -94,7 +94,7 @@ export class AppComponent implements OnInit {
       this.display_t = true;
     },
     error => {
-      this.results_t = 'API não encontrada';
+      this.results_t = 'Problema de inicialização do berço';
     });
   }
 
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
       this.display_b = true;
     },
     error => {
-      this.results_b = 'API não encontrada';
+      this.results_b = 'Problema de inicialização do berço';
     });
   }
 
