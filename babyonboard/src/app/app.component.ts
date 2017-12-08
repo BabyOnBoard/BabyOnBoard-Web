@@ -131,7 +131,7 @@ export class AppComponent implements OnInit {
   }
 
   getMovement(){
-    this.apiService.getData(this.url+this.endpoint_m).subscribe(data => {
+    this.apiService.getData("http://192.168.0.165/movement").subscribe(data => {
       this.results_m = data['status'];
     },
     error => {
@@ -140,19 +140,19 @@ export class AppComponent implements OnInit {
   }
 
   onSubmitFrontMove(value: string): void {
-    this.apiService.setMovement(this.url+this.endpoint_m, value, 'front')
+    this.apiService.setMovement("http://192.168.0.165/movement", value, 'front')
     this.move = Move.front_move;
     console.log('front move ativado por ' + value + ' minutos.');
   }
 
   onSubmitSideMove(value: string): void {
-    this.apiService.setMovement(this.url+this.endpoint_m, value, 'side')
+    this.apiService.setMovement("http://192.168.0.165/movement", value, 'side')
     this.move = Move.side_move;
     console.log('side move ativado por ' + value + ' minutos.');
   }
 
   onSubmitVibrate(value: string): void {
-    this.apiService.setMovement(this.url+this.endpoint_m, value, 'vibration')
+    this.apiService.setMovement("http://192.168.0.165/movement", value, 'vibration')
     this.move = Move.vibrate;
     console.log('vibrar ativado por ' + value + ' minutos.');
   }
