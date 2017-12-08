@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
 
 
   private alive: boolean;
+  private alert: boolean;
   private display_h: boolean;
   private display_t: boolean;
   private display_b: boolean;
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit {
     this.display_t = false;
     this.display_b = false;
     this.alive = true;
+    this.alert = false;
     this.move = Move.none;
 
     this.ip = window.location.hostname;
@@ -100,7 +102,27 @@ export class AppComponent implements OnInit {
 
   getBreath(){
     this.apiService.getData(this.url+this.endpoint_b).subscribe(data => {
-      this.results_b = data['status'];
+      //this.results_b = data['status'];
+      if (data['status'] == "absent"){
+        this.results_b = "Criança ausente";
+        if(this.alert == true){
+          this.alert = false;               //Changing situations makes the alert reset
+        }
+      } else if(data['status'] == "breathing"){
+        this.results_b = "Respirando";
+        if(this.alert == true){
+          this.alert = false;
+        }
+      } else if(data['status'] == "no_breathing"){
+        this.results_b = "Sem respirar";
+          if(this.alert == false){        //Only alert once
+            this.alert = true;
+            console.log("AI NÃO");
+            //alert("Há algo errado com a respiração do seu bebê!");
+          }
+      }else{
+       console.log("Status de breathing inválido");
+      }
       this.display_b = true;
     },
     error => {
