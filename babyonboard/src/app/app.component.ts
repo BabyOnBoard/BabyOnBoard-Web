@@ -102,28 +102,28 @@ export class AppComponent implements OnInit {
 
   getBreath(){
     this.apiService.getData(this.url+this.endpoint_b).subscribe(data => {
-      //this.results_b = data['status'];
-      if (data['status'] == "absent"){
-        this.results_b = "Criança ausente";
-        if(this.alert == true){
-          this.alert = false;               //Changing situations makes the alert reset
-        }
-      } else if(data['status'] == "breathing"){
-        this.results_b = "Respirando";
-        if(this.alert == true){
-          this.alert = false;
-        }
-      } else if(data['status'] == "no_breathing"){
-        this.results_b = "Sem respirar";
-          if(this.alert == false){        //Only alert once
-            this.alert = true;
-            console.log("AI NÃO");
-            //alert("Há algo errado com a respiração do seu bebê!");
-          }
-      }else{
-       console.log("Status de breathing inválido");
-      }
-      this.display_b = true;
+
+      switch(data['status']) {
+        case "absent":
+          this.results_b = "Criança ausente";
+          if(this.alert == true) this.alert = false;               //Changing situations makes the alert reset
+          break;
+        case "breathing":
+            this.results_b = "Sem respirar";
+            if(this.alert == true) this.alert = false;               //Changing situations makes the alert reset
+            break;
+        case "no_breathing":
+            this.results_b = "Sem respirar";
+            if(this.alert == false){        //Only alert once
+                this.alert = true;
+                console.log("AI NÃO");
+                alert("Há algo errado com a respiração do seu bebê!");
+            }
+            break;
+        default:
+             console.log("Status de breathing inválido");
+     }
+     this.display_b = true;
     },
     error => {
       this.results_b = 'Problema de inicialização do berço';
