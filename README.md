@@ -2,7 +2,7 @@
 
 ## Installing and running BabyOnBOard Web app:
 
-# On Terminal
+### On Terminal
 
 ````
 sudo apt-get update 
@@ -28,3 +28,8 @@ cd babyonboard
 
 and replace the scr folder with the one on this repository. 
 
+## The app
+
+The Baby on Board Web app is intended to run alongside the Baby on Board API (https://github.com/BabyOnBoard/BabyOnBoard-API}{https://github.com/BabyOnBoard/BabyOnBoard-API). It communicates with it by HTTP protocol requirements. 
+
+Its purpose is to allert the user in case the baby on the babycrib stops breathing, show the baby's temperature, heartbeat and breathing status and the baby him/herself via live video stream only by beeing connected on the same network, no internet required. It also allows the user to pick a movement for the baby-crib to perform and choose for how long so the baby can sleep.
